@@ -1,0 +1,32 @@
+---
+galaxy_info:
+  author: mhutter
+  description: iptables management
+  # Some suggested licenses:
+  # - BSD (default)
+  # - MIT
+  # - GPLv2
+  # - GPLv3
+  # - Apache
+  # - CC-BY
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  # platforms:
+  # - name: Fedora
+  #   versions:
+  #   - all
+  #   - 25
+  # - name: SomePlatform
+  #   versions:
+  #   - all
+  #   - 1.0
+  #   - 7
+  #   - 99.99
+
+  galaxy_tags:
+    - iptables
+    - firewall
+
+dependencies: []

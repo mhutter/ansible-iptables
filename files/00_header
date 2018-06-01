@@ -1,0 +1,8 @@
+# Ansible managed
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+### Related connections
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+### Applications/Services

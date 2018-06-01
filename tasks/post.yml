@@ -1,0 +1,30 @@
+---
+- name: Prepare default fragments
+  copy:
+    src: '{{ item[1] }}'
+    dest: /etc/iptables/fragments.{{ item[0] }}/{{ item[1] }}
+    owner: root
+    group: root
+    mode: 0644
+  loop: "{{ lookup('nested', ['v4', 'v6'], ['00_header', '99_footer']) }}"
+
+- name: Generate rules.vX
+  assemble:
+    src: /etc/iptables/fragments.{{ item }}
+    dest: /etc/iptables/rules.{{ item }}
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - v4
+    - v6
+  register: rulefiles
+
+- name: Reload iptables rules
+  shell: iptables-restore < /etc/iptables/rules.v4
+  when: rulefiles is changed
+
+- name: Reload ip6tables rules
+  shell: ip6tables-restore < /etc/iptables/rules.v6
+  when: rulefiles is changed

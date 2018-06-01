@@ -1,0 +1,14 @@
+---
+- name: Install iptables-persistent
+  package:
+    name: iptables-persistent
+
+- name: Create iptables fragment dirs
+  file:
+    path: /etc/iptables/fragments.{{ item }}
+    state: directory
+    owner: root
+    group: root
+  loop:
+    - v4
+    - v6
