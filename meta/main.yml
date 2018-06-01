@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: mhutter
+  name: iptables
   description: iptables management
   # Some suggested licenses:
   # - BSD (default)
@@ -28,5 +29,6 @@ galaxy_info:
   galaxy_tags:
     - iptables
     - firewall
+    - system
 
 dependencies: []
