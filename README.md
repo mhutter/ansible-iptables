@@ -59,3 +59,7 @@ Add the following snippet to your `requirements.yml`:
 ```
 
 And then run `ansible-galaxy install -r requirements.yml` as usual
+
+## Role Variables
+
+* `iptables_phase` - either `pre` or `post`, see "Usage" section
