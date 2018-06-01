@@ -3,7 +3,7 @@
   vars:
     iptables_phase: pre
   roles:
-    - name: mhutter.iptables
+    - name: ansible-iptables
       tags: iptables
 
 # ... all other plays & tasks of your playbook
@@ -12,5 +12,5 @@
   vars:
     iptables_phase: post
   roles:
-    - name: mhutter.iptables
+    - name: ansible-iptables
       tags: iptables
