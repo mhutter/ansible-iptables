@@ -1,5 +1,5 @@
 # mhutter.iptables
-[![Build Status](https://travis-ci.com/mhutter/mhutter-iptables.svg?branch=master)](https://travis-ci.com/mhutter/mhutter-iptables)
+[![Build Status](https://travis-ci.com/mhutter/ansible-iptables.svg?branch=master)](https://travis-ci.com/mhutter/ansible-iptables)
 
 Manage iptables rules using Ansible.
 
