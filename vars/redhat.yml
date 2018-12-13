@@ -1,0 +1,7 @@
+---
+iptables_persistence_package: iptables-services
+iptables_rulesfile_v4: /etc/sysconfig/iptables
+iptables_rulesfile_v6: /etc/sysconfig/ip6tables
+iptables_services:
+  - iptables
+  - ip6tables

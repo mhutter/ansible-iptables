@@ -1,7 +1,13 @@
 ---
-- name: Install iptables-persistent
+- name: Install iptables persistence package
   package:
-    name: iptables-persistent
+    name: '{{ iptables_persistence_package }}'
+
+- name: Enable iptables services
+  service:
+    name: '{{ item }}'
+    enabled: true
+  loop: '{{ iptables_services }}'
 
 - name: Create iptables fragment dirs
   file:
