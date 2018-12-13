@@ -8,23 +8,29 @@
     mode: 0644
   loop: "{{ lookup('nested', ['v4', 'v6'], ['00_header', '99_footer']) }}"
 
-- name: Generate rules.vX
+- name: Generate v4 rules
   assemble:
-    src: /etc/iptables/fragments.{{ item }}
-    dest: /etc/iptables/rules.{{ item }}
-    backup: yes
+    src: /etc/iptables/fragments.v4
+    dest: '{{ iptables_rulesfile_v4 }}'
+    backup: true
     owner: root
     group: root
     mode: 0644
-  loop:
-    - v4
-    - v6
-  register: rulefiles
+  register: r_rulefile_v4
+- name: Generate v6 rules
+  assemble:
+    src: /etc/iptables/fragments.v6
+    dest: '{{ iptables_rulesfile_v6 }}'
+    backup: true
+    owner: root
+    group: root
+    mode: 0644
+  register: r_rulefile_v6
 
 - name: Reload iptables rules
-  shell: iptables-restore < /etc/iptables/rules.v4
-  when: rulefiles is changed
+  shell: iptables-restore < {{ iptables_rulesfile_v4 }}
+  when: r_rulefile_v4 is changed
 
 - name: Reload ip6tables rules
-  shell: ip6tables-restore < /etc/iptables/rules.v6
-  when: rulefiles is changed
+  shell: ip6tables-restore < {{ iptables_rulesfile_v6 }}
+  when: r_rulefile_v6 is changed
