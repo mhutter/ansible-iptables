@@ -28,9 +28,9 @@
   register: r_rulefile_v6
 
 - name: Reload iptables rules
-  shell: iptables-restore < {{ iptables_rulesfile_v4 }}
+  shell: 'grep -v ^-6 {{ iptables_rulesfile_v4 }} | iptables-restore'
   when: r_rulefile_v4 is changed
 
 - name: Reload ip6tables rules
-  shell: ip6tables-restore < {{ iptables_rulesfile_v6 }}
+  shell: 'grep -v ^-4 {{ iptables_rulesfile_v6 }} | ip6tables-restore'
   when: r_rulefile_v6 is changed
